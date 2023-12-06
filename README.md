@@ -30,3 +30,20 @@ $ fpm build --profile debug --flag -fallow-argument-mismatch
 $ fpm run --profile debug --flag -fallow-argument-mismatch
 ```
 
+
+## netcdf-c编译技巧
+
+> 与conda存在冲突，一定不能使用conda的netcdf
+
+```bash
+export LD_LIBRARY_PATH="/usr/local/lib"
+
+sudo apt-get install libhdf5-dev libcurl4-openssl-dev --yes
+git clone https://github.com/Unidata/netcdf-c.git
+cd netcdf-c
+mkdir build; cd build
+cmake ..
+make -j
+sudo make install
+```
+
